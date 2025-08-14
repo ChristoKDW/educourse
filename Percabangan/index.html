@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percabangan JavaScript</title>
+</head>
+<body>
+    <h1>Penilaian Siswa</h1>
+    <p id="hasil"></p>
+
+    <script>
+        let nama = "Christo";
+        let skor = 85;
+        let grade = "";
+
+        // Percabangan if else if
+        if (skor >= 90) {
+            grade = "A";
+        } else if (skor >= 80) {
+            grade = "B";
+        } else if (skor >= 70) {
+            grade = "C";
+        } else {
+            grade = "D";
+        }
+
+        // Percabangan switch untuk keterangan
+        let keterangan = "";
+        switch (grade) {
+            case "A":
+                keterangan = "Sangat Baik";
+                break;
+            case "B":
+                keterangan = "Baik";
+                break;
+            case "C":
+                keterangan = "Cukup";
+                break;
+            default:
+                keterangan = "Perlu belajar lebih giat";
+        }
+
+        // Tampilkan hasil
+        document.getElementById("hasil").innerHTML =
+            `Nama: ${nama} <br> Skor: ${skor} <br> Grade: ${grade} <br> Keterangan: ${keterangan}`;
+    </script>
+</body>
+</html>

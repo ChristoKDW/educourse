@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array JavaScript</title>
+</head>
+<body>
+    <h1>Daftar Belanja</h1>
+    <ul id="listBelanja"></ul>
+
+    <script>
+        let belanja = ["Beras", "Gula", "Telur", "Minyak Goreng"];
+
+        // Tambah item
+        belanja.push("Kopi");
+
+        // Hapus item pertama
+        belanja.shift();
+
+        // Tampilkan daftar belanja
+        let listHTML = "";
+        for (let item of belanja) {
+            listHTML += `<li>${item}</li>`;
+        }
+        document.getElementById("listBelanja").innerHTML = listHTML;
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator JavaScript</title>
+</head>
+<body>
+    <h1>Belajar Operator di JavaScript</h1>
+    <p id="hasil"></p>
+
+    <script>
+        let x = 8;
+        let y = 4;
+
+        // Aritmatika
+        let tambah = x + y;
+        let bagi = x / y;
+
+        // Perbandingan
+        let lebihBesar = x > y;
+
+        // Logika
+        let logika = (x > 5) && (y < 10);
+
+        // Tampilkan hasil
+        document.getElementById("hasil").innerHTML = `
+            <strong>Hasil Aritmatika:</strong> ${x} + ${y} = ${tambah} <br>
+            ${x} / ${y} = ${bagi} <br><br>
+            <strong>Hasil Perbandingan:</strong> ${x} > ${y} = ${lebihBesar} <br><br>
+            <strong>Hasil Logika:</strong> (x > 5) && (y < 10) = ${logika}
+        `;
+    </script>
+</body>
+</html>
