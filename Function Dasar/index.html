@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Dasar</title>
+</head>
+    <h1>Belajar Function Dasar</h1>
+    <p id="hasil"></p>
+<body>
+    <script>
+        function Fungsi(name) {
+            return "- Perkenalkan Nama Saya " + name;
+        }
+
+        console.log(Fungsi("Dirham"))
+        console.log(Fungsi("Baso"))
+        console.log(Fungsi("Annas"))
+        console.log(Fungsi("Alizha"))
+
+        document.getElementById("hasil").innerHTML = Fungsi("Alizha") + "<br>" + Fungsi("Dirham") + "<br>" + Fungsi("Baso") + "<br>" + Fungsi("Annas");
+
+    </script>
+</body>
+</html>
