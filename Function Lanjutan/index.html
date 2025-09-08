@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Function Lanjutan</title>
+</head>
+<body>
+    <h1>Function Lanjutan</h1>
+    <p id="output"></p>
+
+    <script>
+        const sapa = function(nama) {
+            return "Halo, " + nama + "!";
+        };
+
+        let pesanSapa = sapa("Alizha");
+
+        function hitungLuasPersegi(sisi) {
+            return sisi * sisi;
+        }
+
+        let sisiPersegi = 5;
+        let luas = hitungLuasPersegi(sisiPersegi);
+
+        const kali = (a, b) => a * b;
+        let hasilKali = kali(4, 5);
+        
+document.getElementById("output").innerHTML =
+    `${pesanSapa}<br>` +
+    `Luas Persegi dengan sisi ${sisiPersegi} adalah ${luas}.<br>` +
+    `Hasil perkalian 4 dan 5 adalah ${hasilKali}.`;
+
+    </script>
+</body>
+</html>
