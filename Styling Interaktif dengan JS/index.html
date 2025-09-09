@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling Interaktif dengan JS</title>
+</head>
+<body>
+    <h2 id="judul">Judul Interaktif</h2>
+    <button id="warnaBtn">Ganti Warna</button>
+    <button id="ukuranBtn">Ganti Ukuran</button>
+    <button id="kelasBtn">Toggle Kelas</button>
+    <style>
+        .besar {
+            font-size: 40px;
+        }
+        .merah {
+            color: red;
+        }
+        .kuning {
+            background: yellow;
+        }
+    </style>
+    <script>
+        const judul = document.getElementById("judul");
+        document.getElementById("warnaBtn").addEventListener("click", function() {
+            judul.style.color = judul.style.color === "red" ? "blue" : "red";
+        });
+        document.getElementById("ukuranBtn").addEventListener("click", function() {
+            judul.style.fontSize = judul.style.fontSize === "40px" ? "24px" : "40px";
+        });
+        document.getElementById("kelasBtn").addEventListener("click", function() {
+            judul.classList.toggle("kuning");
+        });
+    </script>
+</body>
+</html>

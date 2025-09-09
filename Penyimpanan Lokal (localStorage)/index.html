@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penyimpanan Lokal (localStorage)</title>
+</head>
+<body>
+    <h2>Penyimpanan Lokal dengan localStorage</h2>
+    <input id="inputNama" type="text" placeholder="Masukkan nama...">
+    <button onclick="simpanNama()">Simpan Nama</button>
+    <p id="hasil"></p>
+    <script>
+        // Menyimpan data ke localStorage
+        function simpanNama() {
+            var nama = document.getElementById("inputNama").value;
+            localStorage.setItem("nama", nama);
+            tampilkanNama();
+        }
+
+        // Mengambil data dari localStorage
+        function tampilkanNama() {
+            var nama = localStorage.getItem("nama");
+            if (nama) {
+                document.getElementById("hasil").innerText = "Nama tersimpan: " + nama;
+            } else {
+                document.getElementById("hasil").innerText = "Belum ada nama yang tersimpan.";
+            }
+        }
+
+        // Tampilkan nama saat halaman di-reload
+        tampilkanNama();
+    </script>
+</body>
+</html>
