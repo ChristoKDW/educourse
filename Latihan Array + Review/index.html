@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Array + Review</title>
+</head>
+<body>
+    <h2>Daftar Nama</h2>
+    <ul id="daftar"></ul>
+    <script>
+        // Membuat array
+        const nama = ["Dirham", "Baso", "Annas", "Alizha"];
+
+        // Menampilkan isi array ke dalam <ul>
+        const daftar = document.getElementById("daftar");
+        nama.forEach(function(item) {
+            const li = document.createElement("li");
+            li.textContent = item;
+            daftar.appendChild(li);
+        });
+
+        // Review konsep dasar: fungsi untuk menambah nama
+        function tambahNama(namaBaru) {
+            nama.push(namaBaru);
+            const li = document.createElement("li");
+            li.textContent = namaBaru;
+            daftar.appendChild(li);
+        }
+
+        // Contoh pemanggilan fungsi
+        tambahNama("Rizki");
+        tambahNama("Agung");
+
+    </script>
+</body>
+</html>
