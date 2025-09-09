@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contoh CSS Flexbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Contoh Tata Letak Flexbox</h2>
+    <p>
+      <b>Flexbox</b> adalah metode modern untuk mengatur tata letak elemen secara fleksibel dan responsif. Dengan Flexbox, kita dapat dengan mudah mengatur posisi, arah, dan jarak antar elemen di dalam container.
+    </p>
+    <ul>
+      <li><b>display: flex</b> — Mengaktifkan flexbox pada container.</li>
+      <li><b>flex-direction</b> — Menentukan arah item (row/baris, column/kolom, row-reverse, column-reverse).</li>
+      <li><b>justify-content</b> — Mengatur posisi item secara horizontal (start, center, end, space-between, space-around, space-evenly).</li>
+      <li><b>align-items</b> — Mengatur posisi item secara vertikal (stretch, center, start, end, baseline).</li>
+      <li><b>gap</b> — Mengatur jarak antar item.</li>
+    </ul>
+    <div class="flex-demo">
+      <div class="item">Item 1</div>
+      <div class="item">Item 2</div>
+      <div class="item">Item 3</div>
+    </div>
+    <p>
+      <b>Contoh di atas:</b><br>
+      - Container menggunakan <code>display: flex</code>.<br>
+      - <code>justify-content: center</code> membuat item berada di tengah secara horizontal.<br>
+      - <code>align-items: center</code> membuat item berada di tengah secara vertikal.<br>
+      - <code>gap: 24px</code> memberi jarak antar item.<br>
+      - <code>flex-direction: row</code> (default) membuat item tersusun secara baris.
+    </p>
+  </div>
+</body>
+</html>
