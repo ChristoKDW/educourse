@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Event Handling</title>
+</head>
+<body>
+    <button id="tombol">Klik Saya</button>
+    <input id="inputan" type="text" placeholder="Ketik sesuatu...">
+    <p id="hasil"></p>
+    <script>
+        // Menangani klik
+        document.getElementById("tombol").addEventListener("click", function(event) {
+            document.getElementById("hasil").innerText = "Tombol diklik!";
+            console.log(event); // event object
+        });
+
+        // Menangani input
+        document.getElementById("inputan").addEventListener("input", function(event) {
+            document.getElementById("hasil").innerText = "Input: " + event.target.value;
+        });
+
+        // Menangani hover (mouseover)
+        document.getElementById("tombol").addEventListener("mouseover", function() {
+            document.getElementById("hasil").innerText = "Mouse di atas tombol!";
+        });
+    </script>
+</body>
+</html>
