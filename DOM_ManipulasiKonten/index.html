@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manipulasi Konten DOM</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Mengubah Isi, Atribut, dan Gaya Elemen dengan DOM</h2>
+    <div class="desc">
+      Contoh interaktif mengubah isi, atribut, dan gaya elemen menggunakan properti <b>innerHTML</b>, <b>textContent</b>, <b>setAttribute</b>, dan <b>style</b>.
+    </div>
+    <div id="demo">Ini adalah konten awal.</div>
+  <button class="btn-isi" onclick="ubahIsi()">Ubah Isi (innerHTML)</button>
+  <button class="btn-text" onclick="ubahText()">Ubah Teks (textContent)</button>
+  <button class="btn-attr" onclick="ubahAtribut()">Ubah Atribut</button>
+  <button class="btn-gaya" onclick="ubahGaya()">Ubah Gaya</button>
+    <br><br>
+    <img id="gambar" src="https://via.placeholder.com/120x80?text=Gambar+Awal" alt="Gambar Awal">
+  </div>
+
+  <script>
+    function ubahIsi() {
+      document.getElementById('demo').innerHTML = '<b>Isi diubah menggunakan innerHTML!</b>';
+    }
+    function ubahText() {
+      document.getElementById('demo').textContent = 'Teks diubah menggunakan textContent!';
+    }
+    function ubahAtribut() {
+      var img = document.getElementById('gambar');
+      img.setAttribute('src', 'https://via.placeholder.com/120x80/3a3a7c/fff?text=Gambar+Baru');
+      img.setAttribute('alt', 'Gambar Baru');
+      document.getElementById('demo').textContent = 'Atribut gambar telah diubah.';
+    }
+    function ubahGaya() {
+      var demo = document.getElementById('demo');
+      demo.style.background = '#3a3a7c';
+      demo.style.color = '#fff';
+      demo.style.fontSize = '1.2em';
+      demo.style.border = '2px solid #23235a';
+      demo.textContent = 'Gaya elemen telah diubah menggunakan style.';
+    }
+  </script>
+</body>
+</html>
