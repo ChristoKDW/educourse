@@ -1,0 +1,113 @@
+.container {
+	max-width: 700px;
+	margin: 48px auto;
+	background: #fff;
+	box-shadow: 0 8px 32px rgba(58,58,124,0.13);
+	border-radius: 16px;
+	padding: 36px 28px 28px 28px;
+}
+
+h2 {
+	color: #3a3a7c;
+	margin-bottom: 18px;
+	font-size: 1.5em;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.flex-demo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	background: #e7e7fa;
+	border-radius: 10px;
+	padding: 28px 0;
+	margin-bottom: 24px;
+	box-shadow: 0 2px 8px rgba(58,58,124,0.08);
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.item {
+	background: linear-gradient(90deg, #6c63ff 60%, #3a3a7c 100%);
+	color: #fff;
+	padding: 24px 32px;
+	border-radius: 8px;
+	font-size: 1.15em;
+	font-weight: 600;
+	box-shadow: 0 2px 8px rgba(58,58,124,0.12);
+	transition: transform 0.2s, box-shadow 0.2s;
+	min-width: 120px;
+	text-align: center;
+}
+.item:hover {
+	transform: scale(1.07) rotate(-2deg);
+	box-shadow: 0 8px 32px rgba(58,58,124,0.18);
+}
+
+@media (max-width: 600px) {
+	.container {
+		padding: 18px 6px;
+	}
+	.flex-demo {
+		flex-direction: column;
+		gap: 16px;
+		padding: 16px 0;
+	}
+	.item {
+		min-width: 80px;
+		padding: 16px 10px;
+		font-size: 1em;
+	}
+}
+body {
+	font-family: 'Segoe UI', Arial, sans-serif;
+	background: linear-gradient(120deg, #f7f7fa 60%, #e7e7fa 100%);
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 600px;
+	margin: 48px auto;
+	background: #fff;
+	box-shadow: 0 8px 32px rgba(58,58,124,0.13);
+	border-radius: 16px;
+	padding: 36px 28px 28px 28px;
+}
+
+h2 {
+	color: #3a3a7c;
+	margin-bottom: 18px;
+	font-size: 1.5em;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.flex-demo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	background: #e7e7fa;
+	border-radius: 10px;
+	padding: 28px 0;
+	margin-bottom: 24px;
+	box-shadow: 0 2px 8px rgba(58,58,124,0.08);
+}
+
+.item {
+	background: linear-gradient(90deg, #6c63ff 60%, #3a3a7c 100%);
+	color: #fff;
+	padding: 24px 32px;
+	border-radius: 8px;
+	font-size: 1.15em;
+	font-weight: 600;
+	box-shadow: 0 2px 8px rgba(58,58,124,0.12);
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+.item:hover {
+	transform: scale(1.07) rotate(-2deg);
+	box-shadow: 0 8px 32px rgba(58,58,124,0.18);
+}
