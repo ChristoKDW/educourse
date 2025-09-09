@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form dan Validasi Dasar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Form Input & Validasi Dasar</h2>
+    <form id="myForm" autocomplete="off">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama">
+      <div id="error-nama" class="error">Nama wajib diisi.</div>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <div id="error-email" class="error">Email wajib diisi.</div>
+
+      <button type="submit">Kirim</button>
+    </form>
+    <div id="sukses" style="display:none; color:#009688; margin-top:18px; font-weight:600;">Data berhasil dikirim!</div>
+  </div>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var nama = document.getElementById('nama').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var valid = true;
+
+      // Reset error
+      document.getElementById('error-nama').style.display = 'none';
+      document.getElementById('error-email').style.display = 'none';
+      document.getElementById('sukses').style.display = 'none';
+
+      if(nama === '') {
+        document.getElementById('error-nama').style.display = 'block';
+        valid = false;
+      }
+      if(email === '') {
+        document.getElementById('error-email').style.display = 'block';
+        valid = false;
+      }
+
+      if(valid) {
+        document.getElementById('sukses').style.display = 'block';
+        document.getElementById('myForm').reset();
+      }
+    });
+  </script>
+</body>
+</html>

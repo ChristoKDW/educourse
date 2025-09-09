@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Validasi Form Lanjutan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Validasi Form Lanjutan</h2>
+    <form id="formLanjutan" autocomplete="off">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <div id="error-email" class="error"></div>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      <div id="error-password" class="error"></div>
+
+      <button type="submit">Kirim</button>
+    </form>
+    <div id="sukses" style="display:none; color:#009688; margin-top:18px; font-weight:600;">Data berhasil dikirim!</div>
+  </div>
+
+  <script>
+    document.getElementById('formLanjutan').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value;
+      var valid = true;
+
+      // Reset error
+      document.getElementById('error-email').style.display = 'none';
+      document.getElementById('error-password').style.display = 'none';
+      document.getElementById('error-email').textContent = '';
+      document.getElementById('error-password').textContent = '';
+      document.getElementById('sukses').style.display = 'none';
+
+      // Email format check
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(email === '') {
+        document.getElementById('error-email').textContent = 'Email wajib diisi.';
+        document.getElementById('error-email').style.display = 'block';
+        valid = false;
+      } else if(!emailPattern.test(email)) {
+        document.getElementById('error-email').textContent = 'Format email tidak valid.';
+        document.getElementById('error-email').style.display = 'block';
+        valid = false;
+      }
+
+      // Password check
+      if(password === '') {
+        document.getElementById('error-password').textContent = 'Password wajib diisi.';
+        document.getElementById('error-password').style.display = 'block';
+        valid = false;
+      } else if(password.length < 6) {
+        document.getElementById('error-password').textContent = 'Password minimal 6 karakter.';
+        document.getElementById('error-password').style.display = 'block';
+        valid = false;
+      } else if(!/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
+        document.getElementById('error-password').textContent = 'Password harus mengandung huruf besar dan angka.';
+        document.getElementById('error-password').style.display = 'block';
+        valid = false;
+      }
+
+      if(valid) {
+        document.getElementById('sukses').style.display = 'block';
+        document.getElementById('formLanjutan').reset();
+      }
+    });
+  </script>
+</body>
+</html>
