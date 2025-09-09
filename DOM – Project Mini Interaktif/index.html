@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM – Project Mini Interaktif</title>
+</head>
+<body>
+    <h2 id="teks">Halo, Selamat Datang!</h2>
+    <button id="ubahTeks">Ubah Teks</button>
+    <button id="tampilAlert">Tampilkan Alert</button>
+    <script>
+        document.getElementById("ubahTeks").addEventListener("click", function() {
+            document.getElementById("teks").textContent = "Teks sudah diubah!";
+        });
+
+        document.getElementById("tampilAlert").addEventListener("click", function() {
+            alert("Ini adalah alert interaktif!");
+        });
+    </script>
+</body>
+</html>
