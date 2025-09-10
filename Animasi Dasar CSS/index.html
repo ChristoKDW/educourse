@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="judul">Animasi Dasar CSS</h1>
+    <button id="animBtn">Tombol</button>
+    <style>
+        #judul {
+            color: #3498db;
+            transition: color 0.5s, transform 0.5s;
+        }
+        .animasi {
+            color: #e74c3c;
+            animation: goyang 0.7s;
+        }
+        @keyframes goyang {
+            0% { transform: rotate(0deg); }
+            20% { transform: rotate(-10deg); }
+            40% { transform: rotate(10deg); }
+            60% { transform: rotate(-10deg); }
+            80% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+    <script>
+        const judul = document.getElementById("judul");
+        document.getElementById("animBtn").addEventListener("click", function() {
+            judul.classList.add("animasi");
+            setTimeout(() => judul.classList.remove("animasi"), 700);
+        });
+    </script>
+</body>
+</html>

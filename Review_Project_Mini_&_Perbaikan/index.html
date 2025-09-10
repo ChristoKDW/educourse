@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Project Mini & Perbaikan</title>
+</head>
+<body>
+    <div class="container">
+        <h2>To-Do List (Perbaikan & Fitur Baru)</h2>
+        <form id="form">
+            <input type="text" id="todoInput" placeholder="Tambah tugas...">
+            <button type="submit">Tambah</button>
+        </form>
+        <div class="error" id="errorMsg">Tugas tidak boleh kosong!</div>
+        <ul id="todoList"></ul>
+    </div>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #f7f7f7 60%, #e0eafc 100%);
+        }
+        .container {
+            max-width: 440px;
+            margin: 48px auto;
+            background: #fff;
+            padding: 36px 26px 26px 26px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #3498db;
+            letter-spacing: 1px;
+        }
+        form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #b0c4de;
+            border-radius: 7px;
+            font-size: 18px;
+            background: #f8faff;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus {
+            border: 1.5px solid #3498db;
+            outline: none;
+        }
+        button {
+            padding: 13px 22px;
+            background: linear-gradient(90deg, #3498db 70%, #6dd5fa 100%);
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+            transition: background 0.2s;
+        }
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #f0f4fa;
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 7px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 4px rgba(52,152,219,0.04);
+            transition: background 0.3s;
+        }
+        li:hover {
+            background: #eaf6fb;
+        }
+        li.editing {
+            background: #ffe082;
+        }
+        .remove, .edit {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+        .remove:hover {
+            background: #c0392b;
+        }
+        .edit {
+            background: #f39c12;
+        }
+        .edit:hover {
+            background: #e67e22;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: none;
+        }
+        @media (max-width: 500px) {
+            .container {
+                max-width: 99%;
+                padding: 16px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            input, button {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <script>
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
+        let editingIdx = null;
+
+        const form = document.getElementById("form");
+        const todoInput = document.getElementById("todoInput");
+        const todoList = document.getElementById("todoList");
+        const errorMsg = document.getElementById("errorMsg");
+
+        function renderTodos() {
+            todoList.innerHTML = "";
+            todos.forEach((todo, idx) => {
+                const li = document.createElement("li");
+                li.textContent = todo;
+                if (editingIdx === idx) {
+                    li.classList.add("editing");
+                    const editInput = document.createElement("input");
+                    editInput.type = "text";
+                    editInput.value = todo;
+                    editInput.style.marginRight = "8px";
+                    li.innerHTML = "";
+                    li.appendChild(editInput);
+                    const saveBtn = document.createElement("button");
+                    saveBtn.textContent = "Simpan";
+                    saveBtn.className = "edit";
+                    saveBtn.onclick = function() {
+                        const newValue = editInput.value.trim();
+                        if (!newValue) return;
+                        todos[idx] = newValue;
+                        localStorage.setItem("todos", JSON.stringify(todos));
+                        editingIdx = null;
+                        renderTodos();
+                    };
+                    li.appendChild(saveBtn);
+                } else {
+                    const editBtn = document.createElement("button");
+                    editBtn.textContent = "Edit";
+                    editBtn.className = "edit";
+                    editBtn.onclick = function() {
+                        editingIdx = idx;
+                        renderTodos();
+                    };
+                    const removeBtn = document.createElement("button");
+                    removeBtn.textContent = "Hapus";
+                    removeBtn.className = "remove";
+                    removeBtn.onclick = function() {
+                        todos.splice(idx, 1);
+                        localStorage.setItem("todos", JSON.stringify(todos));
+                        renderTodos();
+                    };
+                    li.appendChild(editBtn);
+                    li.appendChild(removeBtn);
+                }
+                todoList.appendChild(li);
+            });
+        }
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const value = todoInput.value.trim();
+            if (!value) {
+                errorMsg.style.display = "block";
+                return;
+            }
+            errorMsg.style.display = "none";
+            todos.push(value);
+            localStorage.setItem("todos", JSON.stringify(todos));
+            todoInput.value = "";
+            renderTodos();
+        });
+
+        renderTodos();
+    </script>
+</html>
