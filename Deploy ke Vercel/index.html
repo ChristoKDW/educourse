@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Praktik Deploy Website ke Vercel</h1>
+        <h2>Langkah-langkah Deploy dari GitHub ke Vercel</h2>
+        <ol>
+            <li>Buat akun di <a href="https://vercel.com" target="_blank">vercel.com</a></li>
+            <li>Push project website Anda ke repository GitHub</li>
+            <li>Di dashboard Vercel, klik "Add New Project" dan pilih repository GitHub Anda</li>
+            <li>Ikuti instruksi, klik "Deploy" dan tunggu proses selesai</li>
+            <li>Website Anda akan mendapatkan URL preview otomatis dari Vercel</li>
+        </ol>
+        <h2>Konfigurasi Domain di Vercel</h2>
+        <ul>
+            <li>Buka dashboard project di Vercel</li>
+            <li>Pilih menu "Domains"</li>
+            <li>Tambahkan custom domain (misal: namadomain.com)</li>
+            <li>Ikuti instruksi untuk mengarahkan DNS domain ke Vercel</li>
+            <li>Domain akan terhubung ke website Anda setelah propagasi DNS selesai</li>
+        </ul>
+        <h2>Preview Project</h2>
+        <p>Setiap kali Anda melakukan perubahan dan push ke GitHub, Vercel akan otomatis membuat preview URL untuk setiap branch atau pull request. Anda bisa melihat hasil update sebelum website utama di-update.</p>
+        <p><b>Keuntungan Vercel:</b> Proses deploy sangat mudah, update otomatis, dan mendukung custom domain serta preview project.</p>
+    </div>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f7f7;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #3498db;
+            margin-bottom: 18px;
+        }
+        h2 {
+            color: #222;
+            margin-top: 24px;
+        }
+        p, ol, ul {
+            font-size: 18px;
+            color: #444;
+        }
+        a {
+            color: #3498db;
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .container {
+                max-width: 98%;
+                padding: 14px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            p, ol, ul {
+                font-size: 16px;
+            }
+        }
+    </style>
+</body>
+</html>

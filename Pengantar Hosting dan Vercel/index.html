@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengantar Hosting dan Vercel</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Pengenalan Hosting Web & Vercel</h1>
+        <h2>Apa itu Hosting Web?</h2>
+        <p>Hosting web adalah layanan untuk menyimpan dan menampilkan website di internet agar bisa diakses oleh siapa saja. File website (HTML, CSS, JS, gambar, dll) ditempatkan di server yang selalu online dan terhubung ke internet.</p>
+        <h2>Apa itu Vercel?</h2>
+        <p>Vercel adalah platform hosting modern yang memudahkan proses deploy website. Dengan Vercel, Anda bisa meng-upload (deploy) website secara otomatis dari repository (misal GitHub), dan website langsung mendapatkan URL publik yang bisa diakses semua orang.</p>
+        <h3>Cara Deploy Website ke Vercel</h3>
+        <ol>
+            <li>Buat akun di <a href="https://vercel.com" target="_blank">vercel.com</a></li>
+            <li>Hubungkan repository project Anda (misal dari GitHub)</li>
+            <li>Klik "Deploy" dan tunggu proses selesai</li>
+            <li>Website Anda langsung online dan mendapatkan URL publik</li>
+        </ol>
+        <p>Vercel sangat cocok untuk web statis, landing page, portfolio, dan aplikasi modern. Setiap kali Anda mengubah kode dan push ke repository, website akan otomatis ter-update di Vercel.</p>
+    </div>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f7f7;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #3498db;
+            margin-bottom: 18px;
+        }
+        h2 {
+            color: #222;
+            margin-top: 24px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        p, ol {
+            font-size: 18px;
+            color: #444;
+        }
+        a {
+            color: #3498db;
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .container {
+                max-width: 98%;
+                padding: 14px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            p, ol {
+                font-size: 16px;
+            }
+        }
+    </style>
+</body>
+</html>
