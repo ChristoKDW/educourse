@@ -12,6 +12,7 @@
             <input type="text" id="todoInput" placeholder="Tambah tugas...">
             <button type="submit">Tambah</button>
         </form>
+        <input type="text" id="searchInput" placeholder="Cari tugas..." class="search">
         <div class="error" id="errorMsg">Tugas tidak boleh kosong!</div>
         <ul id="todoList"></ul>
     </div>
@@ -37,7 +38,7 @@
         form {
             display: flex;
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         input[type="text"] {
             flex: 1;
@@ -51,6 +52,14 @@
         input[type="text"]:focus {
             border: 1.5px solid #3498db;
             outline: none;
+        }
+        .search {
+            margin-bottom: 16px;
+            font-size: 17px;
+            padding: 10px;
+            border-radius: 7px;
+            border: 1px solid #b0c4de;
+            background: #f8faff;
         }
         button {
             padding: 13px 22px;
@@ -129,60 +138,66 @@
         }
     </style>
     <script>
-        let todos = JSON.parse(localStorage.getItem("todos")) || [];
+        let todos = JSON.parse(localStorage.getItem("todos_review")) || [];
         let editingIdx = null;
+        let filter = "";
 
         const form = document.getElementById("form");
         const todoInput = document.getElementById("todoInput");
         const todoList = document.getElementById("todoList");
         const errorMsg = document.getElementById("errorMsg");
+        const searchInput = document.getElementById("searchInput");
 
         function renderTodos() {
             todoList.innerHTML = "";
-            todos.forEach((todo, idx) => {
-                const li = document.createElement("li");
-                li.textContent = todo;
-                if (editingIdx === idx) {
-                    li.classList.add("editing");
-                    const editInput = document.createElement("input");
-                    editInput.type = "text";
-                    editInput.value = todo;
-                    editInput.style.marginRight = "8px";
-                    li.innerHTML = "";
-                    li.appendChild(editInput);
-                    const saveBtn = document.createElement("button");
-                    saveBtn.textContent = "Simpan";
-                    saveBtn.className = "edit";
-                    saveBtn.onclick = function() {
-                        const newValue = editInput.value.trim();
-                        if (!newValue) return;
-                        todos[idx] = newValue;
-                        localStorage.setItem("todos", JSON.stringify(todos));
-                        editingIdx = null;
-                        renderTodos();
-                    };
-                    li.appendChild(saveBtn);
-                } else {
-                    const editBtn = document.createElement("button");
-                    editBtn.textContent = "Edit";
-                    editBtn.className = "edit";
-                    editBtn.onclick = function() {
-                        editingIdx = idx;
-                        renderTodos();
-                    };
-                    const removeBtn = document.createElement("button");
-                    removeBtn.textContent = "Hapus";
-                    removeBtn.className = "remove";
-                    removeBtn.onclick = function() {
-                        todos.splice(idx, 1);
-                        localStorage.setItem("todos", JSON.stringify(todos));
-                        renderTodos();
-                    };
-                    li.appendChild(editBtn);
-                    li.appendChild(removeBtn);
-                }
-                todoList.appendChild(li);
-            });
+            todos
+                .filter(todo => todo.toLowerCase().includes(filter.toLowerCase()))
+                .forEach((todo, idx) => {
+                    const li = document.createElement("li");
+                    li.textContent = todo;
+                    if (editingIdx === idx) {
+                        li.classList.add("editing");
+                        const editInput = document.createElement("input");
+                        editInput.type = "text";
+                        editInput.value = todo;
+                        editInput.style.marginRight = "8px";
+                        li.innerHTML = "";
+                        li.appendChild(editInput);
+                        const saveBtn = document.createElement("button");
+                        saveBtn.textContent = "Simpan";
+                        saveBtn.className = "edit";
+                        saveBtn.onclick = function() {
+                            const newValue = editInput.value.trim();
+                            if (!newValue) return;
+                            todos[idx] = newValue;
+                            localStorage.setItem("todos_review", JSON.stringify(todos));
+                            editingIdx = null;
+                            renderTodos();
+                        };
+                        li.appendChild(saveBtn);
+                    } else {
+                        const editBtn = document.createElement("button");
+                        editBtn.textContent = "Edit";
+                        editBtn.className = "edit";
+                        editBtn.onclick = function() {
+                            editingIdx = idx;
+                            renderTodos();
+                        };
+                        const removeBtn = document.createElement("button");
+                        removeBtn.textContent = "Hapus";
+                        removeBtn.className = "remove";
+                        removeBtn.onclick = function() {
+                            if (confirm('Yakin ingin menghapus tugas ini?')) {
+                                todos.splice(idx, 1);
+                                localStorage.setItem("todos_review", JSON.stringify(todos));
+                                renderTodos();
+                            }
+                        };
+                        li.appendChild(editBtn);
+                        li.appendChild(removeBtn);
+                    }
+                    todoList.appendChild(li);
+                });
         }
 
         form.addEventListener("submit", function(e) {
@@ -194,11 +209,17 @@
             }
             errorMsg.style.display = "none";
             todos.push(value);
-            localStorage.setItem("todos", JSON.stringify(todos));
+            localStorage.setItem("todos_review", JSON.stringify(todos));
             todoInput.value = "";
+            renderTodos();
+        });
+
+        searchInput.addEventListener("input", function(e) {
+            filter = searchInput.value;
             renderTodos();
         });
 
         renderTodos();
     </script>
+</body>
 </html>
