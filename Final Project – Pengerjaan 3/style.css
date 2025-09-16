@@ -1,0 +1,21 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f8fb;
+  margin: 0;
+  color: #333;
+}
+header {
+  background: linear-gradient(90deg, #4aa3f0, #6dd5fa);
+  color: white;
+  padding: 18px 24px;
+}
+header h1 { margin: 0 0 6px 0; }
+nav a { color: rgba(255,255,255,0.9); text-decoration: none; margin-right: 8px; }
+.container { max-width: 1000px; margin: 24px auto; padding: 0 20px; }
+main { padding: 20px; }
+footer { text-align: center; padding: 12px; color: #666; }
+
+@media (max-width: 600px) {
+  header { padding: 14px; }
+  main { padding: 12px; }
+}

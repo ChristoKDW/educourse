@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kerangka proyek final - Pengerjaan 2">
+    <title>Final Project – Pengerjaan 2</title>
+    <style>
+        :root{--brand:#2f8fd6;--muted:#6b7280}
+        body{font-family:Segoe UI,Arial,sans-serif;background:#f3f6fb;margin:0;color:#222}
+        header{background:linear-gradient(90deg,var(--brand),#6dc1f3);color:#fff;padding:16px}
+        header nav a{color:rgba(255,255,255,0.9);text-decoration:none;margin-right:10px}
+        .wrap{max-width:900px;margin:28px auto;padding:18px}
+        .card{background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+        form{display:flex;gap:10px;margin-bottom:12px}
+        input[type=text]{flex:1;padding:10px;border:1px solid #d1d5db;border-radius:8px}
+        button{padding:10px 14px;border-radius:8px;border:none;background:var(--brand);color:#fff;cursor:pointer}
+        .error{color:#e02424;margin-bottom:8px;display:none}
+        ul{list-style:none;padding:0;margin:0}
+        li{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;background:#f8fbff;margin-bottom:8px}
+        .controls button{margin-left:8px;padding:6px 10px;border-radius:6px;border:none;cursor:pointer}
+        .btn-edit{background:#f59e0b;color:#fff}
+        .btn-del{background:#ef4444;color:#fff}
+        .highlight{background:linear-gradient(90deg,#fff7ed,#fff3b0)}
+        small{color:var(--muted)}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <h1>Final Project - Pengerjaan 2</h1>
+            <nav>
+                <a href="#home">Home</a> |
+                <a href="#features">Fitur</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="card" id="features">
+            <h2>Kelola Fitur (Contoh Interaktif)</h2>
+            <p>Tambahkan fitur yang ingin diimplementasikan. Contoh ini menyimpan daftar ke <code>localStorage</code>.</p>
+
+            <form id="featureForm">
+                <input type="text" id="featureInput" placeholder="Masukkan nama fitur...">
+                <button type="submit">Tambah</button>
+            </form>
+            <div class="error" id="errorMsg">Nama fitur tidak boleh kosong.</div>
+
+            <ul id="featureList"></ul>
+            <p><small>Klik nama fitur untuk toggle highlight (contoh manipulasi DOM).</small></p>
+        </section>
+    </main>
+
+    <footer class="wrap"><div class="card"><small>&copy; 2025 - Final Project</small></div></footer>
+
+    <script>
+        (function(){
+            const STORAGE_KEY = 'features_p2';
+            let features = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+            const form = document.getElementById('featureForm');
+            const input = document.getElementById('featureInput');
+            const list = document.getElementById('featureList');
+            const error = document.getElementById('errorMsg');
+
+            function save(){
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(features));
+            }
+
+            function render(){
+                list.innerHTML = '';
+                features.forEach((f, idx) => {
+                    const li = document.createElement('li');
+                    const span = document.createElement('span');
+                    span.textContent = f;
+                    span.setAttribute('data-idx', idx);
+                    span.style.cursor = 'pointer';
+                    span.addEventListener('click', function(){
+                        // Toggle highlight class as example of style change
+                        li.classList.toggle('highlight');
+                    });
+
+                    const ctrl = document.createElement('div');
+                    ctrl.className = 'controls';
+                    const edit = document.createElement('button');
+                    edit.textContent = 'Edit'; edit.className = 'btn-edit';
+                    edit.addEventListener('click', function(){
+                        const newVal = prompt('Edit fitur:', f);
+                        if(newVal && newVal.trim()){
+                            features[idx] = newVal.trim(); save(); render();
+                        }
+                    });
+                    const del = document.createElement('button');
+                    del.textContent = 'Hapus'; del.className = 'btn-del';
+                    del.addEventListener('click', function(){
+                        if(confirm('Hapus fitur ini?')){ features.splice(idx,1); save(); render(); }
+                    });
+
+                    ctrl.appendChild(edit); ctrl.appendChild(del);
+                    li.appendChild(span); li.appendChild(ctrl);
+                    list.appendChild(li);
+                });
+            }
+
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                const val = input.value.trim();
+                if(!val){ error.style.display = 'block'; return; }
+                error.style.display = 'none';
+                features.push(val);
+                save(); render();
+                input.value = '';
+                input.focus();
+            });
+
+            // render awal
+            render();
+
+            // Expose small helpers for console demo (optional)
+            window._features = features;
+            window._saveFeatures = save;
+        })();
+    </script>
+</body>
+</html>

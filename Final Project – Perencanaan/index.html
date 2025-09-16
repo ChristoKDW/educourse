@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project – Perencanaan</title>
+</head>
+<body>
+    <div class="plan">
+        <h1>Perencanaan Final Project</h1>
+        <section>
+            <h2>1. Ide & Tujuan</h2>
+            <p>Contoh ide: Aplikasi katalog kursus online sederhana untuk menampilkan materi, kuis singkat, dan tugas mini. Tujuan: membantu peserta belajar topik web dasar dengan contoh interaktif.</p>
+        </section>
+
+        <section>
+            <h2>2. Fitur Utama</h2>
+            <ul>
+                <li>Halaman daftar kursus (filter, pencarian)</li>
+                <li>Halaman materi (teks, contoh kode, video)</li>
+                <li>Kuis singkat dengan penilaian otomatis</li>
+                <li>Mini project dengan penyimpanan lokal</li>
+                <li>Admin sederhana untuk menambah materi</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Wireframe & UI Flow (lo-fi)</h2>
+            <pre>
+Homepage
+  ├─ Header (logo, nav)
+  ├─ Hero / CTA
+  ├─ Daftar Kursus (grid)
+  └─ Footer
+
+Course Page
+  ├─ Breadcrumb
+  ├─ Judul & deskripsi
+  ├─ Materi (tabs: Text, Video, Kuis)
+  └─ Tugas / Download
+            </pre>
+        </section>
+
+        <section>
+            <h2>4. Pembagian Tugas (jika kelompok)</h2>
+            <ul>
+                <li>Frontend: layout, styling, responsive</li>
+                <li>Backend (opsional): API sederhana atau mock data</li>
+                <li>UX/UI: wireframe, assets, ikon</li>
+                <li>QA: testing, bug report, aksesibilitas</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>5. Catatan Teknis & Tools</h2>
+            <ul>
+                <li>HTML, CSS (Flex/Grid), JavaScript</li>
+                <li>localStorage untuk menyimpan progress/hasil kuis</li>
+                <li>GitHub + Vercel untuk deploy</li>
+            </ul>
+        </section>
+    </div>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f9fc; }
+        .plan { max-width: 900px; margin: 36px auto; background: #fff; padding: 28px; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+        h1 { color: #2c6fb7; }
+        h2 { color: #223; margin-top: 18px; }
+        pre { background: #f4f8fc; padding: 12px; border-radius: 6px; }
+        ul, ol { margin-left: 18px; }
+        @media (max-width: 800px) { .plan { margin: 18px; padding: 16px; } }
+    </style>
+</body>
+</html>
